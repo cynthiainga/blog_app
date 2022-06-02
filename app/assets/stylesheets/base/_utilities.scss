@@ -1,0 +1,21 @@
+@import './variable';
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $whit-color;
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+.clickable {
+  cursor: pointer;
+}
