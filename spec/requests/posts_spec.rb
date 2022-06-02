@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Posts Controller', :type => :request do
+RSpec.describe 'Posts Controller', type: :request do
   describe 'GET /index' do
     it "Redirects to the user posts' page" do
       get '/users/id/posts'

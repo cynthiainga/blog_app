@@ -28,7 +28,7 @@ RSpec.describe 'Users Controller', type: :request do
       expect(response.body).to include('Bio')
       expect(response.body).to include('Post #2')
     end
-    
+
     it 'GET users/id should succeed' do
       get '/users/id'
       expect(response).to have_http_status(:ok)
