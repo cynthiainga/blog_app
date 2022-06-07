@@ -1,28 +1,16 @@
 <div class="posts-bloc">
   <div class="user-bloc">
-    <div class="user-image"></div>
+    <div class="user-image">
+      <img src="<%= @user.photo %>" alt="user image">
+    </div>
     <div class="user-data">
-      <h2>User name</h2>
-      <span class="user-posts">Number of posts: x</span>
+      <h2><%= @user.name%></h2>
+      <span class="user-posts">Number of posts: <%= @user.posts_counter%></span>
     </div>
   </div>
 
-  <% for j in 1..2 %>
-    <div class="user-bloc-posts">
-      <div class="user-bloc-post">
-        <h4>Post #<%= j %></h4>
-        <span class="user-post-content">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Iste obcaecati consectetur esse quod laboriosam. Fugit.
-        </span>
-        <span class="comments-likes">Comments: x, Likes: x</span>
-      </div>
-      <div class="user-bloc-post-comments">
-        <% for i in 1..5%>
-          <span> Username: Comment <%= i %> </span>
-        <% end %>
-      </div>
-    </div>
+  <% @user.posts.each do |post| %>
+    <%= render partial: "post", locals: { post: post } %>
   <% end %>
 
   <button class="pagination clickable">Pagination</button>
