@@ -17,7 +17,7 @@
     <div class="user-bloc-post">
       <h4><a href="<%= @user.id %>/posts/<%= post.id%>"><%= post.title %></a></h4>
       <span class="user-post-content"><%= post.text %></span>
-      <span class="user-post-content-comments">Comment: <%= post.comments_counter %>, Likes : x</span>
+      <span class="user-post-content-comments">Comment: <%= post.comments_counter %>, Likes : <%= post.likes_counter %></span>
     </div>
     <% end %>
   </div>
