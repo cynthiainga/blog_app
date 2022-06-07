@@ -1,11 +1,5 @@
 <div class="users-bloc">
-  <% for i in 0..9 do %>
-    <div class="user-bloc">
-      <div class="user-image"></div>
-      <div class="user-data">
-        <h4 class="title">User name</h4>
-        <span class="user-posts">Number of posts: x</span>
-      </div>
-    </div>
+  <% @users.each do |user| %>
+    <%= render partial: 'user', locals: {user: user} %>
   <% end %>
 </div> 
