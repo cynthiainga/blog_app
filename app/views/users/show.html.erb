@@ -1,32 +1,27 @@
 <div class="users-bloc">
   <div class="user-bloc">
-    <div class="user-image"></div>
+    <div class="user-image">
+      <img src="<%= @user.photo %>" alt="user image">
+    </div>
     <div class="user-data">
-      <h4 class="user-name">User name</h4>
-      <span class="user-posts">Number of posts: </span>
+      <h4 class="user-name"><%= @user.name%></h4>
+      <span class="user-posts">Number of posts: <%= @user.posts_counter || 0%></span>
     </div>
   </div>
   <div class="user-bio">
     <h4>Bio</h4>
-    <span class="user-bio-content">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque iste
-      totam distinctio omnis repudiandae itaque ut atque nostrum dolorum tenetur
-      id ea eum corporis deleniti fugit non, inventore soluta natus molestias
-      eveniet eos blanditiis quos exercitationem. Iste totam commodi nostrum!
-    </span>
+    <span class="user-bio-content"><%= @user.bio %></span>
   </div>
   <div class="user-bloc-posts">
-    <% for i in 1..3 %>
+    <% @user.recent_posts.each do |post| %>
     <div class="user-bloc-post">
-      <h4>Post #<%= i %></h4>
-      <span class="user-post-content">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus
-        quisquam perspiciatis, a alias commodi unde vitae sequi dignissimos
-        inventore at aperiam, ipsum soluta aut quidem.
-      </span>
-      <span class="user-post-content-comments">Comment: x, Likes : x</span>
+      <h4><a href="<%= @user.id %>/posts/<%= post.id%>"><%= post.title %></a></h4>
+      <span class="user-post-content"><%= post.text %></span>
+      <span class="user-post-content-comments">Comment: <%= post.comments_counter || 0%>, Likes : <%= post.likes_counter || 0%></span>
     </div>
     <% end %>
   </div>
-  <button class="see-posts clickable">See all posts</button>
+  <button class="see-posts clickable">
+    <%= link_to 'See all posts', user_post_path(@user) %>
+  </button>
 </div>
