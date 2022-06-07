@@ -1,11 +1,11 @@
 <div class="users-bloc">
   <div class="user-bloc">
     <div class="user-image">
-      <img src="<%= @user.photo alt="user image">
+      <img src="<%= @user.photo %>" alt="user image">
     </div>
     <div class="user-data">
       <h4 class="user-name"><%= @user.name%></h4>
-      <span class="user-posts">Number of posts: <%= @user.posts_counter %></span>
+      <span class="user-posts">Number of posts: <%= @user.posts_counter || 0%></span>
     </div>
   </div>
   <div class="user-bio">
@@ -17,7 +17,7 @@
     <div class="user-bloc-post">
       <h4><a href="<%= @user.id %>/posts/<%= post.id%>"><%= post.title %></a></h4>
       <span class="user-post-content"><%= post.text %></span>
-      <span class="user-post-content-comments">Comment: <%= post.comments_counter %>, Likes : <%= post.likes_counter %></span>
+      <span class="user-post-content-comments">Comment: <%= post.comments_counter || 0%>, Likes : <%= post.likes_counter || 0%></span>
     </div>
     <% end %>
   </div>

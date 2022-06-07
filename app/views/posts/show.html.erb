@@ -2,11 +2,9 @@
   <div class="user-bloc-posts">
     <div class="user-bloc-post">
       <h4><%= @post.title %></h4>
-      <span class="user-post-content-comments">Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></span>
-      <span class="user-post-content"><%= @post.tex %></span>
+      <span class="user-post-content-comments">Comments: <%= @post.comments_counter || 0%>, Likes: <%= @post.likes_counter || 0%></span>
+      <span class="user-post-content"><%= @post.text %></span>
     </div>
-    <div class="user-bloc-post-comments">
-      <%= render partial: 'comment', locals: { post: @post, comments: @post.comments }%>
-    </div>
+    <%= render partial: 'comment', locals: { post: @post, comments: @post.comments }%>
   </div>
 </div>

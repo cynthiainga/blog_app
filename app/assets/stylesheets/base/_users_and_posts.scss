@@ -14,6 +14,11 @@
       width: 100px;
       height: 100px;
       margin-right: 10px;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
 
     .user-data {
@@ -78,7 +83,11 @@
 .see-posts,
 .pagination {
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 
   @include buttons;
+}
+
+.see-posts:hover {
+  text-decoration: none;
 }
