@@ -1,0 +1,8 @@
+<div class="user-bloc-posts">
+  <div class="user-bloc-post">
+    <h4><a href="posts/<%= post.id%><%= post.title %>"></a></h4>
+    <span class="user-post-content"><%= post.text %></span>
+    <span class="comments-likes">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></span>
+  </div>
+  <%= render partial: 'comment', locals: { post: post, comments: post.recent_comments } %>
+</div>
