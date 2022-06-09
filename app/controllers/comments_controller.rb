@@ -6,8 +6,15 @@ class CommentsController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    Comment.create(post_params(post))
-    redirect_to user_post_path(current_user, post)
+    @comment = Comment.new(post_params(post))
+
+    if @comment.save
+      flash[:notice] = 'Comment created successfully!'
+      redirect_to user_post_path(current_user, post)
+    else
+      flash[:alert] = 'Can not add a comment.'
+      redirect_to { new_user_post(current_user) }
+    end
   end
 
   private
