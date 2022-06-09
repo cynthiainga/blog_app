@@ -7,4 +7,7 @@
     </div>
     <%= render partial: 'comment', locals: { post: @post, comments: @post.comments }%>
   </div>
+  <%= button_to "Add new Comment", new_user_post_comment_path(@post.author, @post), method: :get, class: "pagination clickable" %>
+
+  <%= button_to "Add a Like", user_post_likes_path(@post.author, @post), class: "pagination clickable" %>
 </div>
