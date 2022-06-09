@@ -2,8 +2,8 @@
 
 <%= form_with(model: @comment, url: user_post_comments_path) do |f| %>
   <div>
-    <%= f.label :text %>
-    <%= f.text_area :text %>
+    <%= f.label :Comment %>
+    <%= f.text_area :text, placeholder: "Type your comment here" %>
   </div>
 
   <%= f.submit 'Add New Comment' %>
