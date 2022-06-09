@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @user = current_user
+    @posts = @user.posts.includes(:comments)
   end
 
   def new
@@ -9,8 +10,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to { user_posts(current_user) }
+    @post = Post.new(post_params)
+
+    if @post.save
+      flash[:notice] = 'New post created successfully!'
+      redirect_to { user_posts(current_user) }
+    else
+      flash[:alert] = 'Can not add a new post.'
+      redirect_to { new_user_post(current_user) }
+    end
   end
 
   def show
@@ -25,7 +33,7 @@ class PostsController < ApplicationController
     a_post
   end
 
-  def post_params_setu
+  def post_params_setup
     Post.create(author: current_user, title: params[:post][:title], text: params[:post][:text])
   end
 end
