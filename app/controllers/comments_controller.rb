@@ -12,10 +12,10 @@ class CommentsController < ApplicationController
 
   private
 
-    def post_params(post)
-      a_post = params.require(:comment).permit(:text)
-      a_post[:author] = current_user
-      a_post[:post] = post
-      a_post
-    end
+  def post_params(post)
+    a_post = params.require(:comment).permit(:text)
+    a_post[:author] = current_user
+    a_post[:post] = post
+    a_post
+  end
 end
