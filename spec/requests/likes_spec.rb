@@ -8,4 +8,10 @@ RSpec.describe "Likes", type: :request do
     end
   end
 
+  describe 'GET /create' do
+    it 'returns http success' do
+      get '/likes/create'
+      expect(response).to have_http_status(:success)
+    end
+  end
 end
