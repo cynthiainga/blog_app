@@ -10,7 +10,7 @@
 - [x] Milestone 4: Processing data in models.
 - [x] Milestone 5: Views.
 - [x] Milestone 6: Forms
-- [ ] Milestone 7: Validations, Model specs, and n+1 problems.
+- [x] Milestone 7: Validations, Model specs, and n+1 problems.
 - [ ] Milestone 8: Add Devise.
 - [ ] Milestone 9: Add authorization rules.
 - [ ] Milestone 10: Integration specs for Views.
@@ -28,9 +28,18 @@
 - Run `rails s` to start interactive the `puma` server.
 - Open `http://localhost:3000` in your browser.
 
+
+### Install the app
+
+- Run `bundle install` to install dependencies
+- `rails db:migrate`
+
+### Run the seeder
+
+- `rails db:seed`
 ### Run Test
 
-`rspec spec`
+`rspec spec/models`
 ## Author
 
 👤 **Candy Inga Cynthia**
