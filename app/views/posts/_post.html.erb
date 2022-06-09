@@ -1,6 +1,8 @@
 <div class="user-bloc-posts">
   <div class="user-bloc-post">
-    <h4><a href="posts/<%= post.id%>"><%= post.title %></a></h4>
+    <%= link_to user_post_path(user, post) do %>
+      <h4><%= post.title %></h4>
+    <% end %>
     <span class="user-post-content"><%= post.text %></span>
     <span class="comments-likes">Comments: <%= post.comments_counter || 0%>, Likes: <%= post.likes_counter || 0%></span>
   </div>
