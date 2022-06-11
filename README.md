@@ -29,11 +29,6 @@
 - Open `http://localhost:3000` in your browser.
 
 
-### Install the app
-
-- Run `bundle install` to install dependencies
-- `rails db:migrate`
-
 ### Run the seeder
 
 - `rails db:seed`
