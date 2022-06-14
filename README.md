@@ -11,7 +11,7 @@
 - [x] Milestone 5: Views.
 - [x] Milestone 6: Forms
 - [x] Milestone 7: Validations, Model specs, and n+1 problems.
-- [ ] Milestone 8: Add Devise.
+- [x] Milestone 8: Add Devise.
 - [ ] Milestone 9: Add authorization rules.
 - [ ] Milestone 10: Integration specs for Views.
 - [ ] Milestone 11: Add API endpoints.
@@ -32,16 +32,23 @@
 ### Run the seeder
 
 - `rails db:seed`
+
 ### Run Test
 
 `rspec spec/models`
-## Author
+
+## Authors
 
 👤 **Candy Inga Cynthia**
 
 - GitHub: [@cynthiainga](https://github.com/cynthiainga)
 - Twitter: [@CynthiaInga_C](https://twitter.com/CynthiaInga_C)
 - LinkedIn: [Cynthia Inga](https://www.linkedin.com/in/cynthia-inga/)
+
+👤 **Emmanuel Jolugbo**
+
+- GitHub: [@Thermiee](https://github.com/Thermiee)
+- LinkedIn: [Emmanuel](https://www.linkedin.com/in/emmanuel-jolugbo/)
 
 ## 🤝 Contributing
 

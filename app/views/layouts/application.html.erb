@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BlogApp</title>
+    <title>Blog App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+      rel="stylesheet" 
+    >
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,9 +19,12 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div. msg, class: name %>
-    <% end -%>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <main class="blog-container">
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: name %>
+      <% end -%>
+      <%= yield %>
+    </main>
   </body>
 </html>
