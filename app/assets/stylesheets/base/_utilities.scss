@@ -66,3 +66,7 @@ label {
 .signout-btn:hover button {
   color: $blue-link-color;
 }
+
+.column {
+  flex-direction: column;
+}
