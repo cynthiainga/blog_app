@@ -35,6 +35,9 @@ gem 'devise'
 
 gem 'letter_opener'
 
+# Use cancancan for authorization rules
+gem 'cancancan'
+
 # Use boostrap gem
 gem 'bootstrap', '~> 5.1.3'
 
