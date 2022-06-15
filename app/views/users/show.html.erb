@@ -1,11 +1,11 @@
-<div class="users-bloc">
+<div class="users-bloc" id="user_<%= @user.id %>">
   <div class="user-bloc">
     <div class="user-image">
       <img src="<%= @user.photo %>" alt="user image">
     </div>
     <div class="user-data">
-      <h4 class="user-name"><%= @user.name%></h4>
-      <span class="user-posts">Number of posts: <%= @user.posts_counter || 0%></span>
+      <h4 class="user-name"><%= @user.name %></h4>
+      <span class="user-posts">Number of posts: <%= @user.posts_counter || 0 %></span>
     </div>
   </div>
   <div class="user-bio">
@@ -24,6 +24,6 @@
     <% end %>
   </div>
   <button class="see-posts clickable">
-    <%= link_to 'See all posts', user_posts_path(@user) %>
+    <%= link_to 'See All Posts', user_posts_path(@user) %>
   </button>
 </div>

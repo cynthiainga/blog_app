@@ -4,7 +4,7 @@
       <h4><%= post.title %></h4>
     <% end %>
     <span class="user-post-content"><%= post.text %></span>
-    <span class="comments-likes">Comments: <%= post.comments_counter || 0%>, Likes: <%= post.likes_counter || 0%></span>
+    <span class="comments-likes">Comments: <%= post.comments_counter || 0 %>, Likes: <%= post.likes_counter || 0 %></span>
   </div>
 
   <% unless post.comments_counter == 0 %>

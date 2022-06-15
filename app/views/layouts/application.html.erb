@@ -21,9 +21,8 @@
   <body>
     <%= render 'layouts/header' %>
     <main class="blog-container">
-      <% flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, class: name %>
-      <% end -%>
+      <%= render "layouts/flash-messages" %>
+
       <%= yield %>
     </main>
   </body>
