@@ -15,13 +15,15 @@
   <div class="user-bloc-posts">
     <% @user.recent_posts.each do |post| %>
     <div class="user-bloc-post">
-      <h4><a href="<%= @user.id %>/posts/<%= post.id%>"><%= post.title %></a></h4>
+      <%= link_to user_post_path(@user, post) do %>
+        <h4><%= post.title %></h4>
+      <% end %>
       <span class="user-post-content"><%= post.text %></span>
-      <span class="user-post-content-comments">Comment: <%= post.comments_counter || 0%>, Likes : <%= post.likes_counter || 0%></span>
+      <span class="user-post-content-comments">Comment: <%= post.comments_counter || 0 %>, Likes : <%= post.likes_counter || 0 %></span>
     </div>
     <% end %>
   </div>
   <button class="see-posts clickable">
-    <%= link_to 'See all posts', user_post_path(@user) %>
+    <%= link_to 'See all posts', user_posts_path(@user) %>
   </button>
 </div>
