@@ -15,5 +15,7 @@
 
   <button class="pagination clickable">Pagination</button>
   <br>
-  <%= button_to 'Add New Post', new_user_post_path(@user), method: :get, class: "clickable pagination"%>
+  <% if current_user %>
+    <%= button_to 'Add New Post', new_user_post_path(@user), method: :get, class: "clickable pagination" %>
+  <% end %>
 </div>

@@ -1,13 +1,13 @@
-<%= form_with(model: @post, url: [@user, @post]) do |form| %>
-<div>
-  <%= form.label :title %>:
-  <%= form.text_field :title %>  
-</div>
+<div class="mt-5">
+  <%= form_with(model: @post, url: [@user, @post]) do |form| %>
+    <div>
+      <%= form.text_field :title, placeholder: 'Enter post title' %>  
+    </div>
 
-<div>
-  <%= form.label :text %>:
-  <%= form.text_area :text %>  
-</div>
+    <div class="mt-2">
+     <%= form.text_area :text, placeholder: 'Enter post text' %>  
+    </div>
 
-<%= form.submit "Add new post" %>
-<% end %>
+    <%= form.submit "Add new post", class: 'pagination text-center' %>
+  <% end %>
+</div>

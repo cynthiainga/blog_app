@@ -6,5 +6,12 @@
     <span class="user-post-content"><%= post.text %></span>
     <span class="comments-likes">Comments: <%= post.comments_counter || 0%>, Likes: <%= post.likes_counter || 0%></span>
   </div>
-  <%= render partial: 'comment', locals: { post: post, comments: post.recent_comments } %>
+
+  <% unless post.comments_counter == 0 %>
+    <%= render partial: 'comment', locals: { post: post, comments: post.recent_comments } %>
+  <% else %>
+    <div class="user-bloc-post-comments mt-2 text-center">
+      <span><%= 'No comment available from this post! Click the Post title to add a new one' %></span>
+    </div>
+  <% end %>
 </div>
