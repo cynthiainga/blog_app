@@ -22,9 +22,40 @@ RSpec.describe 'Post', type: :system do
       expect(page).to have_content(@user.name)
     end
 
-    it 'should display the number of posts the user has written' do
-      expect(page).to have_content('Number of posts:')
-      expect(page).to have_content(@user.posts_counter)
+    it 'should show post title' do
+        expect(page).to have_content(@post.title)
+    end
+
+    it "should show the post's body." do
+        expect(page).to have_content(@post.text)
+    end
+
+    it 'should show the first comments on a post' do
+        expect(page).to have_content('Test Comment')
+    end
+
+    it 'should display the number of comments the user has written' do
+        expect(page).to have_content('Number of comments:')
+        expect(page).to have_content(@user.comments_counter)
+    end
+
+    it 'should display how many comments a post has.' do
+        expect(page).to have_content('Number of comments:')
+        expect(page).to have_content(@post.comments_count)       
+    end
+
+    it 'should display how many likes a post has.' do
+        expect(page).to have_content('Number of likes:')
+        expect(page).to have_content(@post.likes_count)
+    end
+
+    it 'should show see a section for pagination if there are more posts than fit on the view.' do
+        expect(page).to have_content('See All Posts')
+    end
+
+    it "should redirect to the post's show page when I click on a post" do
+         click_link(@post.title)
+      expect(current_path).to eql(user_post_path(@user.id, @post.id))
     end
   end
 end
