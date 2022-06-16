@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+#! Create custom failure for turbo
+class TurboFailureApp < Devise::FailureApp
+  def respond
+    if request_format == :turbo_stream
+      redirect
+    else
+      super
+    end
+  end
+
+  def skip_format?
+    %w(html turbo_stream */*).include? request_format.to_s
+  end
+end
+
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
 # are not: uncommented lines are intended to protect your configuration from
@@ -239,6 +254,10 @@ Devise.setup do |config|
   #
   # Require the `devise-encryptable` gem when using anything other than bcrypt
   # config.encryptor = :sha512
+
+  config.authentication_keys = [ :login ]
+
+  config.navigational_formats = ['*/*', :html, :turbo_stream]
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for

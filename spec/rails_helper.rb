@@ -60,4 +60,16 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :model
+  # Capybara.default_driver = :selenium_chrome
+  Capybara.register_driver :chrome_headless do |app|
+    Capybara::Selenium::Driver.new app,
+                                   browser: :chrome,
+                                   clear_session_storage: true,
+                                   clear_local_storage: true,
+                                   capabilities: [Selenium::WebDriver::Chrome::Options.new(
+                                     args: %w[headless disable-gpu no-sandbox window-size=1024,768]
+                                   )]
+  end
 end
