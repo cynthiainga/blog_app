@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Post', type: :system do
-  context 'Index page' do
+  context 'index page' do
     before(:each) do
       @users = User.create!(name: 'Candy', photo: '#photo_candy', bio: 'bio',
                             email: 'test@domain.com')
@@ -32,6 +32,20 @@ RSpec.describe 'Post', type: :system do
 
     it 'should show the first comments on a post' do
       expect(page).to have_content('Test Comment')
+    end
+  end
+
+  context 'index page' do
+    before(:each) do
+      @users = User.create!(name: 'Candy', photo: '#photo_candy', bio: 'bio',
+                            email: 'test@domain.com')
+      @user.confirm
+
+      @post = Post.create(author_id: @user.id, title: 'Integration test', text: 'Exciting!')
+      @comment = Comment.create(author_id: @user.id, post_id: @post.id, text: 'Test Comment')
+      Like.create(author_id: @user.id, post_id: @post.id)
+
+      visit user_post_path(@user.id, @post.id)
     end
 
     it 'should display the number of comments the user has written' do
