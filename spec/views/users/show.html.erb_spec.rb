@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe 'User index page', type: :system do
   describe 'User show page' do
     before(:each) do
-      @user = User.create!(name: 'Landry', photo: '#photo_landry', bio: 'My bio #landry !', email: 'landry@test.com', password: 'landry123456', posts_counter: 0)
+      @user = User.create!(name: 'Landry', photo: '#photo_landry', bio: 'My bio #landry !', email: 'landry@test.com', password: 'landry123456',
+                           posts_counter: 0)
 
       10.times do |i|
         @p = Post.create(author: @user, title: "#{i}/ Post ", text: "This is my #{i} post")

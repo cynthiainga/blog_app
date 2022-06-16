@@ -13,7 +13,7 @@
 - [x] Milestone 7: Validations, Model specs, and n+1 problems.
 - [x] Milestone 8: Add Devise.
 - [x] Milestone 9: Add authorization rules.
-- [ ] Milestone 10: Integration specs for Views.
+- [x] Milestone 10: Integration specs for Views.
 - [ ] Milestone 11: Add API endpoints.
 - [ ] Milestone 12: API documentation.
 
@@ -33,9 +33,13 @@
 
 - `rails db:seed`
 
-### Run Test
+### Run Test for models
 
 `rspec spec/models`
+
+### Run Test for views
+
+`bundle exec rspec spec/views`
 
 ## Authors
 
