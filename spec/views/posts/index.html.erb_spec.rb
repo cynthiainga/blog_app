@@ -1,73 +1,58 @@
 require 'rails_helper'
 
 RSpec.describe 'Post', type: :system do
-  context 'index page' do
+  describe 'Index page' do
     before(:each) do
-      @users = [User.create!(name: 'Candy', photo: '#photo_candy', bio: 'bio', email: 'test@domain.com')]
-      @user.confirm
+      @user = User.create!(name: 'Candy', photo: '#photo_candy', bio: 'bio',
+                           email: 'test@domain.com', password: 'password', posts_counter: 0)
+      10.times do |i|
+        @post = Post.create(author: @user, title: "#{i}/ Post ", text: "Exciting #{i} post")
+      end
 
-      @post = Post.create(author_id: @user.id, title: 'Integration test', text: 'Exciting!')
-      @comment = Comment.create(author_id: @user.id, post_id: @post.id, text: 'Test Comment')
-      Like.create(author_id: @user.id, post_id: @post.id)
+      @comment = Comment.create(post: @post, author: @user, text: 'Test Comment')
 
-      visit user_post_path(@user.id, @post.id)
+      Like.create(author: @user, post: @post)
+
+      visit new_user_session_path
+      fill_in 'user_email', with: 'test@domain.com'
+      fill_in 'user_password', with: 'Temmy1234'
+      click_button 'Log in'
+      visit user_posts_path(@user.id)
+    end
+    after(:each) do
+      User.destroy_all
     end
 
     it "should display the user's photo" do
-      expect(page).to have_css('img')
+      expect(page.find("#user_#{@user.id} img")['src']).to have_content @user.photo
     end
 
     it "should display the user's name" do
-      expect(page).to have_content(@user.name)
+      expect(page).to have_content @user.name
     end
 
     it 'should show post title' do
-      expect(page).to have_content(@post.title)
+      expect(page).to have_content '9/ Post'
     end
 
     it "should show the post's body." do
-      expect(page).to have_content(@post.text)
+      expect(page).to have_content 'Exciting 9 post'
     end
 
     it 'should show the first comments on a post' do
-      expect(page).to have_content('Test Comment')
+      expect(page).to have_content 'Test Comment'
     end
-  end
-
-  context 'index page' do
-    before(:each) do
-      @users = [User.create!(name: 'Candy', photo: '#photo_candy', bio: 'bio', email: 'test@domain.com')]
-      @user.confirm
-
-      @post = Post.create(author_id: @user.id, title: 'Integration test', text: 'Exciting!')
-      @comment = Comment.create(author_id: @user.id, post_id: @post.id, text: 'Test Comment')
-      Like.create(author_id: @user.id, post_id: @post.id)
-
-      visit user_post_path(@user.id, @post.id)
-    end
-
     it 'should display the number of comments the user has written' do
-      expect(page).to have_content('Number of comments:')
-      expect(page).to have_content(@user.comments_counter)
-    end
-
-    it 'should display how many comments a post has.' do
-      expect(page).to have_content('Number of comments:')
-      expect(page).to have_content(@post.comments_count)
+      expect(page).to have_content 'Number of posts: 10'
     end
 
     it 'should display how many likes a post has.' do
-      expect(page).to have_content('Number of likes:')
-      expect(page).to have_content(@post.likes_count)
+      visit user_post_path(@user.id, @post.id)
+      expect(page).to have_content 'Like'
     end
 
     it 'should show see a section for pagination if there are more posts than fit on the view.' do
-      expect(page).to have_content('See All Posts')
-    end
-
-    it "should redirect to the post's show page when I click on a post" do
-      click_link(@post.title)
-      expect(current_path).to eql(user_post_path(@user.id, @post.id))
+      expect(page).to have_content 'Pagination'
     end
   end
 end
