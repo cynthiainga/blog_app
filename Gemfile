@@ -38,6 +38,8 @@ gem 'letter_opener'
 # Use cancancan for authorization rules
 gem 'cancancan'
 
+gem 'jwt'
+
 # Use boostrap gem
 gem 'bootstrap', '~> 5.1.3'
 
