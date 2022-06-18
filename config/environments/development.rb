@@ -6,6 +6,17 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+
+  config.debug_exception_response_format = :default  #added
+  config.action_mailer.delivery_method = :letter_opener #added
+
+  config.after_initialize do
+    Bullet.enable        = true
+    Bullet.bullet_logger = true
+    Bullet.console       = true
+    Bullet.rails_logger  = true
+  end
+
   config.cache_classes = false
 
   # Do not eager load code on boot.
