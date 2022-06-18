@@ -11,8 +11,13 @@ class User < ApplicationRecord
 
   validates :name, presence: true, allow_blank: false
   validates :posts_counter, numericality: { only_integer: true }, comparison: { greater_than_or_equal_to: 0 }
+  after_save :add_token
 
   def recent_posts
     posts.order(created_at: :desc).limit(3)
+  end
+
+  def add_token
+    update_column(:authentication_token, ApiHelper::JsonWebToken.encode(email))
   end
 end
