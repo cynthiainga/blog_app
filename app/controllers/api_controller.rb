@@ -41,7 +41,6 @@ class ApiController < ApplicationController
     end
   end
 
-
   def list_users_and_post_comments
     authentication_token = params[:authentication_token]
     return unless check_token_user_params(authentication_token)
@@ -51,7 +50,6 @@ class ApiController < ApplicationController
     comments = Comment.where(post_id: params[:post_id], author_id: params[:user_id])
     json_response(comments)
   end
-
 
   def check_token_user_params(authentication_token)
     if authentication_token.nil?
